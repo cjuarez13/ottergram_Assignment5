@@ -12,9 +12,6 @@ QUnit.test('Testing: get and get All', function(assert) {
 
     var obj = ds.getAll();
     assert.deepEqual(obj, {'m@bond.com': 'tea', 'james@bond.com':'eshpressho'}, 'Correct outputs');
-    //assert.equal(ds.get('dr@no.com'), 'coffee', 'Correct output: coffee');
-    //assert.equal(ds.get('me@goldfinger.com'), 'double mocha', 'Correct output: double mocha');
-
 });
 
 
@@ -23,13 +20,17 @@ QUnit.test('Testing: Truck module', function(assert) {
     var Truck = App.Truck;
     var DataStore = App.DataStore;
     var myTruck = new Truck('ncc-1701', new DataStore());
+    // window.myTruck = myTruck;
 
     myTruck.createOrder({ emailAddress: 'me@goldfinger.com', coffee: 'double mocha'});
     myTruck.createOrder({ emailAddress: 'dr@no.com', coffee: 'decaf'});
     myTruck.createOrder({ emailAddress: 'm@bond.com', coffee: 'earl grey'});
-    myTruck.printOrders(); myTruck.deliverOrder('dr@no.com');
-    myTruck.deliverOrder('m@bond.com'); myTruck.printOrders();
 
-    assert.deepEqual();
+    assert.deepEqual(myTruck.newOrders(), ['me@goldfinger.com', 'dr@no.com', 'm@bond.com'], 'Correct outputs');
+    //myTruck.printOrders();
+    myTruck.deliverOrder('dr@no.com');
+    myTruck.deliverOrder('m@bond.com');
+    //myTruck.printOrders();
+    assert.deepEqual(myTruck.newOrders(), ['me@goldfinger.com'], 'Correct outputs');
 
 });

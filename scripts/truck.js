@@ -26,6 +26,17 @@
         }.bind(this));
     };
 
+    Truck.prototype.newOrders = function() {
+        var customerIdArray = Object.keys(this.db.getAll());
+
+        console.log('Truck #' + this.truckId + ' has pending orders:');
+        customerIdArray.forEach(function() {}.bind(this));
+
+        return customerIdArray;
+    };
+
+
+
     App.Truck = Truck;
     window.App = App;
 
