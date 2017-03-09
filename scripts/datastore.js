@@ -3,7 +3,7 @@
     var App = window.App || {};
 
     function DataStore() {
-        //console.log('running the DataStore function');
+        console.log('running the DataStore function');
         this.data = {};
     }
 
